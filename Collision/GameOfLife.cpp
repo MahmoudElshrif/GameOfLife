@@ -9,7 +9,7 @@ int main()
 
 
     unsigned long long t = 0;
-
+    int updatetime = 300;
     bool running = false;
     while (window.isOpen())
     {
@@ -22,10 +22,14 @@ int main()
                 if (event.key.scancode == sf::Keyboard::Scan::Space) {
                     //std::cout << "shit\n" << std::endl;
                     running = !running;
-                    t = 499;
+                    t = updatetime - 1;
                 }
                 if (event.key.scancode == sf::Keyboard::Scan::Q) {
                     bm.reset();
+                }
+
+                if (event.key.scancode == sf::Keyboard::Scan::W) {
+                    bm.enableGrid();
                 }
             }
             bm.handleInput(event);
@@ -41,7 +45,7 @@ int main()
         if(running)
             t += 1;
 
-        if (t >= 500) {
+        if (t >= updatetime) {
             bm.update();
             t = 0;
         }

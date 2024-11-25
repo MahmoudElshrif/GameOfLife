@@ -7,7 +7,7 @@ Board::Board(int width,int height) : width(width),height(height) {
 	for (int x = 0; x < width; x++) {
 		cells[x] = new bool[height];
 		for (int y = 0; y < height; y++) {
-			cells[x][y] = x == y + 1;
+			cells[x][y] = 0;
 		}
 	}
 }
