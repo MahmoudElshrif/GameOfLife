@@ -10,6 +10,7 @@ int main()
 
     unsigned long long t = 0;
 
+    bool running = false;
     while (window.isOpen())
     {
         sf::Event event;
@@ -17,6 +18,16 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.scancode == sf::Keyboard::Scan::Space) {
+                    //std::cout << "shit\n" << std::endl;
+                    running = !running;
+                    t = 499;
+                }
+                if (event.key.scancode == sf::Keyboard::Scan::Q) {
+                    bm.reset();
+                }
+            }
             bm.handleInput(event);
         }
 
@@ -27,11 +38,11 @@ int main()
 
         bm.draw();
 
-        t += 1;
+        if(running)
+            t += 1;
 
         if (t >= 500) {
             bm.update();
-            std::cout << "update\n";
             t = 0;
         }
 
