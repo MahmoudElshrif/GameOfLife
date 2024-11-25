@@ -32,4 +32,17 @@ void BoardManager::draw() {
 }
 
 
-void BoardManager::handleInput()
+void BoardManager::handleInput(sf::Event event) {
+	auto pos = sf::Mouse::getPosition(*window);
+	pos = getGridPosition(pos);
+
+	auto lclicked = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+	auto rclicked = sf::Mouse::isButtonPressed(sf::Mouse::Right);
+
+	if (lclicked) {
+		board->setCell(pos.x, pos.y, true);
+	}
+	else if(rclicked){
+		board->setCell(pos.x, pos.y, false);
+	}
+}

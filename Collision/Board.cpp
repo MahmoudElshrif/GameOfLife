@@ -1,4 +1,5 @@
 #include "Board.h"
+#include <vector>
 
 
 Board::Board(int width,int height) : width(width),height(height) {
@@ -39,6 +40,17 @@ void Board::run() {
 	for (int i = 0; i < width; i++) {
 		temp[i] = new bool[height];
 	}
+
+
+	/*std::vector<std::vector<int>> sum;
+	for (int x = 0; x < width; x++) {
+		std::vector<int> v = { 0 };
+		for (int y = 0; y < height; y++) {
+			v.push_back(v.front() + getCell(x, y));
+		}
+		sum.push_back(v);
+	}*/
+
 	for (int x = 0; x < width; x++) {
 		for (int y = 0; y < height; y++) {
 			int count = count_neighbors(x, y);

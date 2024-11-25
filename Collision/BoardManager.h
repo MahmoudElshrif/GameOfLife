@@ -9,9 +9,9 @@ class BoardManager
 	sf::RenderWindow* window;
 	bool playing = false;
 public:
-	BoardManager(sf::RenderWindow* window, int width = 50,int height = 50);
+	BoardManager(sf::RenderWindow* window, int width = 100,int height = 100);
 	sf::Vector2f getSize() { return sf::Vector2f(board->getWidth(), board->getHeight()); }
-	sf::Vector2i getGridPosition(sf::Vector2f pos) { return sf::Vector2i((int)(pos.x / cellSize().x), (int)(pos.y / cellSize().y)); }
+	sf::Vector2i getGridPosition(sf::Vector2i pos) { return sf::Vector2i((int)(pos.x / cellSize().x), (int)(pos.y / cellSize().y)); }
 	sf::Vector2f cellSize();
 	void start();
 	void stop();
